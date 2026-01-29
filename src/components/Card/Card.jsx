@@ -1,34 +1,33 @@
+import * as S from "./Card.styled";
+
 export default function Card({ topic, title, date }) {
-  const themeClasses = {
-    "Web Design": "_orange",
-    Research: "_green",
-    Copywriting: "_purple",
-  };
-
-  const themeClass = themeClasses[topic] || "_gray";
-
   return (
-    <div className="cards__item">
-      <div className="cards__card card">
-        <div className="card__group">
-          <div className={`card__theme ${themeClass}`}>
-            <p className={themeClass}>{topic}</p>
-          </div>
+    <S.CardsItem>
+      <S.CardsContainer>
+        <S.CardGroup>
+          <S.CardTheme $topic={topic}>
+            <p>{topic}</p>
+          </S.CardTheme>
+
           <a href="#popBrowse" target="_self">
-            <div className="card__btn">
+            <S.CardBtn>
               <div></div>
               <div></div>
               <div></div>
-            </div>
+            </S.CardBtn>
           </a>
-        </div>
-        <div className="card__content">
-          <h3 className="card__title">{title}</h3>
-          <div className="card__date">
+        </S.CardGroup>
+        <S.CardContent>
+          <S.CardTitle>{title}</S.CardTitle>
+          <S.CardDate>
+            <S.CardDateSvg viewBox="0 0 13 13">
+              <path d="M10.5625 2.03125H2.4375C1.7644 2.03125 1.21875 2.5769 1.21875 3.25V10.5625C1.21875 11.2356 1.7644 11.7812 2.4375 11.7812H10.5625C11.2356 11.7812 11.7812 11.2356 11.7812 10.5625V3.25C11.7812 2.5769 11.2356 2.03125 10.5625 2.03125Z" />
+              <path d="M11.7812 4.0625H1.21875M3.25 1.21875V2.03125M9.75 1.21875V2.03125" />
+            </S.CardDateSvg>
             <p>{date}</p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </S.CardDate>
+        </S.CardContent>
+      </S.CardsContainer>
+    </S.CardsItem>
   );
 }

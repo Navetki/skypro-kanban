@@ -6,6 +6,8 @@ import PopNewCard from "./components/popups/PopNewCard/PopNewCard";
 import PopBrowse from "./components/popups/PopBrowse/PopBrowse";
 import { useState, useEffect } from "react";
 import { cardList } from "./data";
+import { GlobalStyle } from "./GlobalStyle.styled";
+import * as S from "./App.styled";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -22,18 +24,22 @@ function App() {
   }, []);
 
   return (
-    <div className="wrapper">
-      <PopUser />
-      <PopNewCard />
-      <PopBrowse />
-      <Header />
+    <>
+      <GlobalStyle />
+      <S.Wrapper>
+        <PopUser />
+        <PopNewCard />
+        <PopBrowse />
 
-      {isLoading ? (
-        <div className="loader">Данные загружаются...</div>
-      ) : (
-        <Main cards={cards} />
-      )}
-    </div>
+        <Header />
+
+        {isLoading ? (
+          <div className="loader">Данные загружаются...</div>
+        ) : (
+          <Main cards={cards} />
+        )}
+      </S.Wrapper>
+    </>
   );
 }
 
