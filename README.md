@@ -14,3 +14,21 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+Skypro Kanban App
+
+Интерактивное приложение для управления задачами в формате Канбан-доски, созданное на **React** с использованием **Vite**.
+
+## Инструкция по запуску
+
+Для работы приложения на вашем компьютере должен быть установлен **Node.js**.
+
+### 1. Установка библиотек
+
+Сначала необходимо установить все зависимости проекта, указанные в `package.json`:
+npm install
+
+### 2.Запуск приложения
+
+Для запуска проекта в режиме разработки выполните команду:
+npm run dev
