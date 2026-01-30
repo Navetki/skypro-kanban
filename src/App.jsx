@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { cardList } from "./data";
 import { GlobalStyle } from "./GlobalStyle.styled";
 import * as S from "./App.styled";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -27,8 +28,6 @@ function App() {
     <>
       <GlobalStyle />
       <S.Wrapper>
-        <PopUser />
-        <PopNewCard />
         <PopBrowse />
 
         <Header />
@@ -36,7 +35,13 @@ function App() {
         {isLoading ? (
           <div className="loader">Данные загружаются...</div>
         ) : (
-          <Main cards={cards} />
+          <Routes>
+            <Route path="/" element={<Main cards={cards} />}>
+              <Route path="new-card" element={<PopNewCard />} />
+              <Route path="exit" element={<PopUser />} />
+              <Route path="task/:id" element={<PopBrowse />} />
+            </Route>
+          </Routes>
         )}
       </S.Wrapper>
     </>

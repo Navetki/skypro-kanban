@@ -112,7 +112,7 @@
 }
 
 .pop-new-card {
-  display: none;
+  display: block;
   width: 100%;
   min-width: 375px;
   height: 100%;
@@ -169,6 +169,10 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+}
+.pop-new-card__left {
+  width: 100%;
+  max-width: 370px;
 }
 .pop-new-card__form {
   max-width: 370px;
@@ -703,4 +707,20 @@
   font-size: 24px;
   color: #565eef;
   font-weight: 700;
+}
+._orange {
+  background-color: #ffe4c2;
+  color: #ff6d00;
+}
+._green {
+  background-color: #b4fdd1;
+  color: #06b16e;
+}
+._purple {
+  background-color: #e9d4ff;
+  color: #9a48f1;
+}
+._gray {
+  background: #94a6be;
+  color: #ffffff;
 }

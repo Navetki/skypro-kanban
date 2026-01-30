@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Container } from "../../App.styled";
 import * as S from "./Header.styled";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isOpened, setIsOpened] = useState(false);
@@ -21,7 +22,7 @@ export default function Header() {
           </S.HeaderLogo>
           <S.HeaderNav>
             <S.HeaderBtnMainNew>
-              <a href="#popNewCard">Создать новую задачу</a>
+              <Link to="/new-card">Создать новую задачу</Link>
             </S.HeaderBtnMainNew>
             <S.HeaderUser onClick={toggleMenu}>Ivan Ivanov</S.HeaderUser>
             {isOpened && (
@@ -33,7 +34,7 @@ export default function Header() {
                   <input type="checkbox" name="checkbox" />
                 </div>
                 <button type="button">
-                  <a href="#popExit">Выйти</a>
+                  <Link to="/exit">Выйти</Link>
                 </button>
               </S.PopUserSet>
             )}
