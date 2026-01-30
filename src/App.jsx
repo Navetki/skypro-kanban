@@ -1,43 +1,40 @@
 import "./App.css";
+
+import { useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+import { GlobalStyle } from "./GlobalStyle.styled";
+import * as S from "./App.styled";
 import Header from "./components/Header/Header";
-import Main from "./components/Main/Main";
+
 import PopUser from "./components/popups/PopUser/PopUser";
 import PopNewCard from "./components/popups/PopNewCard/PopNewCard";
 import PopBrowse from "./components/popups/PopBrowse/PopBrowse";
-import { useState, useEffect } from "react";
-import { cardList } from "./data";
-import { GlobalStyle } from "./GlobalStyle.styled";
-import * as S from "./App.styled";
+
+import MainPage from "./pages/MainPage/MainPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    // таймер на 2 секунды
-    const timer = setTimeout(() => {
-      setCards(cardList);
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const [user, setUser] = useState(true);
 
   return (
     <>
       <GlobalStyle />
       <S.Wrapper>
-        <PopUser />
-        <PopNewCard />
-        <PopBrowse />
-
-        <Header />
-
-        {isLoading ? (
-          <div className="loader">Данные загружаются...</div>
-        ) : (
-          <Main cards={cards} />
-        )}
+        <Routes>
+          <Route
+            path="/"
+            element={user ? <MainPage /> : <Navigate to="/login" />}
+          >
+            <Route path="task/:id" element={<PopBrowse />} />
+            <Route path="exit" element={<PopUser setUser={setUser} />} />
+            <Route path="new-card" element={<PopNewCard />} />
+          </Route>
+          <Route path="/login" element={<LoginPage setUser={setUser} />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
       </S.Wrapper>
     </>
   );
