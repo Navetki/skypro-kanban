@@ -1,14 +1,15 @@
 // загловок и список карточек
 
 import Card from "../Card/Card.jsx";
+import * as S from "./Column.styled";
 
 export default function Column({ title, cardList }) {
   return (
-    <div className="main__column column">
-      <div className="column__title">
+    <S.MainColumn>
+      <S.ColumnTitle>
         <p>{title}</p>
-      </div>
-      <div className="cards">
+      </S.ColumnTitle>
+      <S.Cards>
         {cardList
           .filter((card) => card.status === title)
           .map((card) => (
@@ -20,7 +21,7 @@ export default function Column({ title, cardList }) {
               date={card.date}
             />
           ))}
-      </div>
-    </div>
+      </S.Cards>
+    </S.MainColumn>
   );
 }
