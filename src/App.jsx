@@ -6,6 +6,9 @@ import PopNewCard from "./components/popups/PopNewCard/PopNewCard";
 import PopBrowse from "./components/popups/PopBrowse/PopBrowse";
 import { useState, useEffect } from "react";
 import { cardList } from "./data";
+import { GlobalStyle } from "./GlobalStyle.styled";
+import * as S from "./App.styled";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -22,18 +25,26 @@ function App() {
   }, []);
 
   return (
-    <div className="wrapper">
-      <PopUser />
-      <PopNewCard />
-      <PopBrowse />
-      <Header />
+    <>
+      <GlobalStyle />
+      <S.Wrapper>
+        <PopBrowse />
 
-      {isLoading ? (
-        <div className="loader">Данные загружаются...</div>
-      ) : (
-        <Main cards={cards} />
-      )}
-    </div>
+        <Header />
+
+        {isLoading ? (
+          <div className="loader">Данные загружаются...</div>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Main cards={cards} />}>
+              <Route path="new-card" element={<PopNewCard />} />
+              <Route path="exit" element={<PopUser />} />
+              <Route path="task/:id" element={<PopBrowse />} />
+            </Route>
+          </Routes>
+        )}
+      </S.Wrapper>
+    </>
   );
 }
 
