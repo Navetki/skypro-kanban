@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { GlobalStyle } from "./GlobalStyle.styled";
 import * as S from "./App.styled";
-import Header from "./components/Header/Header";
 
 import PopUser from "./components/popups/PopUser/PopUser";
 import PopNewCard from "./components/popups/PopNewCard/PopNewCard";

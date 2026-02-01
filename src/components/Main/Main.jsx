@@ -1,6 +1,7 @@
 import Column from "../Column/Column.jsx";
 import * as S from "./Main.styled";
 import { Container } from "../../App.styled";
+import { Outlet } from "react-router-dom";
 
 export default function Main({ cards }) {
   const statusList = [
@@ -21,6 +22,7 @@ export default function Main({ cards }) {
           </S.MainContent>
         </S.MainBlock>
       </Container>
+      <Outlet />
     </S.Main>
   );
 }
