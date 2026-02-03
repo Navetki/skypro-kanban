@@ -117,6 +117,7 @@ export default function PopNewCard() {
               className="form-new__create _hover01"
               id="btnCreate"
               onClick={handleFormSubmit}
+              type="button"
             >
               Создать задачу
             </button>

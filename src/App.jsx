@@ -5,7 +5,9 @@ import * as S from "./App.styled";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
 
 function App() {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || null,
+  );
 
   const loginUser = (userData) => {
     setUser(userData);
