@@ -5,16 +5,17 @@ import * as S from "./App.styled";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
 
 function App() {
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
-  return (
-    <>
-      <GlobalStyle />
-      <S.Wrapper>
-        <AppRoutes user={user} setUser={setUser} />
-      </S.Wrapper>
-    </>
-  );
+  const loginUser = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
+  };
+
+  const logoutUser = () => {
+    setUser(null);
+    localStorage.removeItem("user");
+  };
+  return <AppRoutes user={user} setUser={loginUser} logout={logoutUser} />;
 }
-
 export default App;

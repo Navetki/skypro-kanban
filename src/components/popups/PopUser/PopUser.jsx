@@ -1,12 +1,12 @@
 // выход из аккаунта
 import { useNavigate } from "react-router-dom";
 
-export default function PopUser({ setUser }) {
+export default function PopUser({ logout }) {
   const navigate = useNavigate();
 
   const handleLogout = (e) => {
     e.preventDefault();
-    setUser(null);
+    logout();
     navigate("/login");
   };
 

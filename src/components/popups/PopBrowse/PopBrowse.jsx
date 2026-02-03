@@ -1,10 +1,30 @@
 // модальное окно для просмотра
 
+import { useOutletContext, useParams, useNavigate } from "react-router-dom";
+import { deleteTask } from "../../../services/api";
 import Calendar from "../../Calendar/Calendar";
-import { useParams, Link } from "react-router-dom";
 
 export default function PopBrowse() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { cards, setCards, user } = useOutletContext();
+
+  const currentCard = cards.find((card) => card._id === id);
+
+  const handleDeleteTask = async (e) => {
+    e.preventDefault(); // На всякий случай
+    if (!window.confirm("Вы уверены, что хотите удалить задачу?")) return;
+
+    try {
+      const data = await deleteTask({ token: user.token, id });
+      setCards(data.tasks);
+      navigate("/");
+    } catch (err) {
+      alert("Не удалось удалить: " + err.message);
+    }
+  };
+
+  if (!currentCard) return null;
 
   return (
     <div className="pop-browse" style={{ display: "block" }}>
@@ -12,9 +32,18 @@ export default function PopBrowse() {
         <div className="pop-browse__block">
           <div className="pop-browse__content">
             <div className="pop-browse__top-block">
-              <h3 className="pop-browse__ttl">Задача №{id}</h3>
-              <div className="categories__theme theme-top _orange _active-category">
-                <p className="_orange">Web Design</p>
+              <h3 className="pop-browse__ttl">{currentCard.title}</h3>
+
+              <div
+                className={`categories__theme theme-top _active-category ${
+                  currentCard.topic === "Web Design"
+                    ? "_orange"
+                    : currentCard.topic === "Research"
+                      ? "_green"
+                      : "_purple"
+                }`}
+              >
+                <p>{currentCard.topic}</p>
               </div>
             </div>
 
@@ -22,7 +51,7 @@ export default function PopBrowse() {
               <p className="status__p subttl">Статус</p>
               <div className="status__themes">
                 <div className="status__theme _gray">
-                  <p className="_gray">Нужно сделать</p>
+                  <p className="_gray">{currentCard.status}</p>
                 </div>
               </div>
             </div>
@@ -41,7 +70,7 @@ export default function PopBrowse() {
                     name="text"
                     id="textArea01"
                     readOnly={true}
-                    placeholder="Введите описание задачи..."
+                    defaultValue={currentCard.description} // Подставляем реальное описание
                   ></textarea>
                 </div>
               </form>
@@ -53,7 +82,10 @@ export default function PopBrowse() {
                 <button className="btn-browse__edit _btn-bor _hover03">
                   Редактировать задачу
                 </button>
-                <button className="btn-browse__delete _btn-bor _hover03">
+                <button
+                  onClick={handleDeleteTask}
+                  className="btn-browse__delete _btn-bor _hover03"
+                >
                   Удалить задачу
                 </button>
               </div>

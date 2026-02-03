@@ -377,7 +377,7 @@
 .categories__theme p {
   font-size: 14px;
   font-weight: 600;
-  line-height: 14px;
+  line-height: 1px;
   white-space: nowrap;
 }
 

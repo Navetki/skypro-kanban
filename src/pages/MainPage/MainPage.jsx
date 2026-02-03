@@ -1,30 +1,40 @@
 import { useState, useEffect } from "react";
-import { cardList } from "../../data";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import { Outlet } from "react-router-dom";
+import { getTasks } from "../../services/api";
+import * as S from "../../App.styled";
 
-export default function MainPage() {
+export default function MainPage({ user }) {
   const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const [isLoading, setIsLoading] = useState(user?.token ? true : false);
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setCards(cardList);
-      setIsLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (!user?.token) {
+      return;
+    }
+    getTasks({ token: user.token })
+      .then((data) => {
+        setCards(data.tasks);
+      })
+      .catch((error) => {
+        alert(error.message);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [user]);
 
   return (
-    <>
-      <Header />
+    <S.Wrapper>
+      <Header user={user} />
       {isLoading ? (
-        <div className="loader">Данные загружаются...</div>
+        <div style={{ textAlign: "center", marginTop: "50px" }}>
+          Данные загружаются...
+        </div>
       ) : (
         <Main cards={cards} />
       )}
-      <Outlet />
-    </>
+      <Outlet context={{ setCards, user, cards }} />
+    </S.Wrapper>
   );
 }
