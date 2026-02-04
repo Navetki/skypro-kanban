@@ -1,17 +1,21 @@
 // выход из аккаунта
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
 
-export default function PopUser({ logout }) {
+export default function PopUser() {
   const navigate = useNavigate();
+  const { logoutUser } = useContext(AuthContext);
 
   const handleLogout = (e) => {
     e.preventDefault();
-    logout();
+    logoutUser();
     navigate("/login");
   };
 
   const handleStay = (e) => {
     e.preventDefault();
+
     navigate("/");
   };
 

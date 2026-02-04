@@ -1,13 +1,17 @@
 // создание задачи
 
-import { useState } from "react";
-import { Link, useNavigate, useOutletContext } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { postTask } from "../../../services/api";
 import Calendar from "../../Calendar/Calendar";
 
+import { AuthContext } from "../../../contexts/AuthContext";
+import { TaskContext } from "../../../contexts/TaskContext";
+
 export default function PopNewCard() {
   const navigate = useNavigate();
-  const { user, setCards } = useOutletContext();
+  const { user } = useContext(AuthContext);
+  const { setCards } = useContext(TaskContext);
 
   const [newTask, setNewTask] = useState({
     title: "",
@@ -113,12 +117,7 @@ export default function PopNewCard() {
               </div>
             </div>
 
-            <button
-              className="form-new__create _hover01"
-              id="btnCreate"
-              onClick={handleFormSubmit}
-              type="button"
-            >
+            <button onClick={handleFormSubmit} type="button">
               Создать задачу
             </button>
           </div>

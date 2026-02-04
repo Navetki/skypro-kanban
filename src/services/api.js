@@ -77,6 +77,7 @@ export async function deleteTask({ token, id }) {
 export async function signIn({ login, password }) {
   const response = await fetch(`${userHost}/login`, {
     method: "POST",
+
     body: JSON.stringify({ login, password }),
   });
 
@@ -93,6 +94,7 @@ export async function signIn({ login, password }) {
 export async function signUp({ login, name, password }) {
   const response = await fetch(userHost, {
     method: "POST",
+
     body: JSON.stringify({ login, name, password }),
   });
 
