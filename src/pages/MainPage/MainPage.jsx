@@ -1,29 +1,44 @@
-import { useState, useEffect } from "react";
-import { cardList } from "../../data";
+import { useState, useEffect, useContext } from "react";
 import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import { Outlet } from "react-router-dom";
+import { getTasks } from "../../services/api";
+//import * as S from "../../App.styled";
+
+import { AuthContext } from "../../contexts/AuthContext";
+import { TaskContext } from "../../contexts/TaskContext";
 
 export default function MainPage() {
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { user } = useContext(AuthContext);
+  const { cards, setCards } = useContext(TaskContext);
+  const [isLoading, setIsLoading] = useState(user?.token ? true : false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setCards(cardList);
-      setIsLoading(false);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    if (!user?.token) return;
+
+    getTasks({ token: user.token })
+      .then((data) => {
+        setError(null);
+        setCards(data.tasks);
+      })
+      .catch((err) => {
+        setError(err.message || "Ошибка при загрузке задач. Попробуйте позже.");
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [user, setCards]);
 
   return (
     <>
       <Header />
-      {isLoading ? (
-        <div className="loader">Данные загружаются...</div>
-      ) : (
-        <Main cards={cards} />
+      {error && (
+        <div style={{ color: "red", textAlign: "center", padding: "20px" }}>
+          {error}
+        </div>
       )}
+      {isLoading ? <div className="loader">...</div> : <Main cards={cards} />}
       <Outlet />
     </>
   );

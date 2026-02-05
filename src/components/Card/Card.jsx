@@ -1,7 +1,7 @@
 import * as S from "./Card.styled";
 import { Link } from "react-router-dom";
 
-export default function Card({ topic, title, date, id }) {
+export default function Card({ topic, title, date, _id }) {
   return (
     <S.CardsItem>
       <S.CardsContainer>
@@ -10,7 +10,7 @@ export default function Card({ topic, title, date, id }) {
             <p>{topic}</p>
           </S.CardTheme>
 
-          <Link to={`/card/${id}`}>
+          <Link to={"/card/" + _id}>
             <S.CardBtn>
               <div></div>
               <div></div>
@@ -19,7 +19,7 @@ export default function Card({ topic, title, date, id }) {
           </Link>
         </S.CardGroup>
         <S.CardContent>
-          <Link to={`/card/${id}`}>
+          <Link to={"/card/" + _id}>
             <S.CardTitle>{title}</S.CardTitle>
           </Link>
           <S.CardDate>

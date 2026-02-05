@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Container } from "../../App.styled";
 import * as S from "./Header.styled";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { TaskContext } from "../../contexts/TaskContext";
 
 export default function Header() {
+  const { user } = useContext(AuthContext);
+
   const [isOpened, setIsOpened] = useState(false);
 
   const toggleMenu = (e) => {
@@ -16,19 +20,24 @@ export default function Header() {
       <Container>
         <S.HeaderBlock>
           <S.HeaderLogo>
-            <a href="" target="_self">
+            <Link to="/">
               <img src="/images/logo.png" alt="logo" />
-            </a>
+            </Link>
           </S.HeaderLogo>
           <S.HeaderNav>
             <S.HeaderBtnMainNew>
               <Link to="/new-card">Создать новую задачу</Link>
             </S.HeaderBtnMainNew>
-            <S.HeaderUser onClick={toggleMenu}>Ivan Ivanov</S.HeaderUser>
+
+            <S.HeaderUser onClick={toggleMenu}>
+              {user?.name || "Пользователь"}
+            </S.HeaderUser>
+
             {isOpened && (
               <S.PopUserSet>
-                <p className="name">Ivan Ivanov</p>
-                <p className="mail">ivan.ivanov@gmail.com</p>
+                <p className="name">{user?.name || "Имя не указано"}</p>
+                <p className="mail">{user?.login || "Почта не указана"}</p>
+
                 <div className="pop-user-set__theme">
                   <p>Темная тема</p>
                   <input type="checkbox" name="checkbox" />

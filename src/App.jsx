@@ -1,20 +1,20 @@
-import { useState } from "react";
 import "./App.css";
 import { GlobalStyle } from "./GlobalStyle.styled";
 import * as S from "./App.styled";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
+import { AuthProvider } from "./contexts/AuthProvider";
+import { TaskProvider } from "./contexts/TaskProvider";
 
 function App() {
-  const [user, setUser] = useState(true);
-
   return (
-    <>
-      <GlobalStyle />
-      <S.Wrapper>
-        <AppRoutes user={user} setUser={setUser} />
-      </S.Wrapper>
-    </>
+    <AuthProvider>
+      <TaskProvider>
+        <GlobalStyle />
+        <S.Wrapper>
+          <AppRoutes />
+        </S.Wrapper>
+      </TaskProvider>
+    </AuthProvider>
   );
 }
-
 export default App;
