@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Container } from "../../App.styled";
 import * as S from "./Header.styled";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { TaskContext } from "../../contexts/TaskContext";
 
-export default function Header({ user }) {
+export default function Header() {
+  const { user } = useContext(AuthContext);
+
   const [isOpened, setIsOpened] = useState(false);
 
   const toggleMenu = (e) => {

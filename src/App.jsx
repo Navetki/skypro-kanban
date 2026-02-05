@@ -1,23 +1,20 @@
-import { useState } from "react";
 import "./App.css";
 import { GlobalStyle } from "./GlobalStyle.styled";
 import * as S from "./App.styled";
 import AppRoutes from "./components/AppRoutes/AppRoutes";
+import { AuthProvider } from "./contexts/AuthProvider";
+import { TaskProvider } from "./contexts/TaskProvider";
 
 function App() {
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null,
+  return (
+    <AuthProvider>
+      <TaskProvider>
+        <GlobalStyle />
+        <S.Wrapper>
+          <AppRoutes />
+        </S.Wrapper>
+      </TaskProvider>
+    </AuthProvider>
   );
-
-  const loginUser = (userData) => {
-    setUser(userData);
-    localStorage.setItem("user", JSON.stringify(userData));
-  };
-
-  const logoutUser = () => {
-    setUser(null);
-    localStorage.removeItem("user");
-  };
-  return <AppRoutes user={user} setUser={loginUser} logout={logoutUser} />;
 }
 export default App;

@@ -1,20 +1,23 @@
 // модальное окно для просмотра
 
-import { useOutletContext, useParams, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { deleteTask } from "../../../services/api";
 import Calendar from "../../Calendar/Calendar";
+
+import { AuthContext } from "../../../contexts/AuthContext";
+import { TaskContext } from "../../../contexts/TaskContext";
 
 export default function PopBrowse() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { cards, setCards, user } = useOutletContext();
+
+  const { user } = useContext(AuthContext);
+  const { cards, setCards } = useContext(TaskContext);
 
   const currentCard = cards.find((card) => card._id === id);
 
-  const handleDeleteTask = async (e) => {
-    e.preventDefault(); // На всякий случай
-    if (!window.confirm("Вы уверены, что хотите удалить задачу?")) return;
-
+  const handleDeleteTask = async () => {
     try {
       const data = await deleteTask({ token: user.token, id });
       setCards(data.tasks);
@@ -89,12 +92,8 @@ export default function PopBrowse() {
                   Удалить задачу
                 </button>
               </div>
-
               <Link to="/">
-                <button
-                  type="button"
-                  className="btn-browse__close _btn-bg _hover01"
-                >
+                <button className="btn-browse__close _btn-bg _hover01">
                   Закрыть
                 </button>
               </Link>

@@ -1,11 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import * as S from "./LoginPage.styled";
-import { useState } from "react";
-import { signIn } from "../../services/api"; //
+import { useState, useContext } from "react";
+import { signIn } from "../../services/api";
+import { AuthContext } from "../../contexts/AuthContext";
 
-export default function LoginPage({ setUser }) {
+export default function LoginPage() {
   const navigate = useNavigate();
-
+  const { loginUser } = useContext(AuthContext);
   const [loginData, setLoginData] = useState({ login: "", password: "" });
 
   const [error, setError] = useState(null);
@@ -18,12 +19,20 @@ export default function LoginPage({ setUser }) {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      // запрос на сервер
-      const data = await signIn(loginData);
 
-      setUser(data.user);
-      navigate("/"); // на главную
+    if (!loginData.login.includes("@")) {
+      setError("Введите корректный адрес электронной почты");
+      return;
+    }
+    if (!loginData.password.trim()) {
+      setError("Введите пароль");
+      return;
+    }
+
+    try {
+      const data = await signIn(loginData);
+      loginUser(data.user);
+      navigate("/");
     } catch (err) {
       setError(err.message);
     }
@@ -38,7 +47,7 @@ export default function LoginPage({ setUser }) {
           </S.ModalTtl>
           <S.ModalForm onSubmit={handleLogin}>
             <S.ModalInput
-              name="login" // имя совпадает с ключом в стейте
+              name="login"
               value={loginData.login}
               onChange={handleInputChange}
               type="text"

@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { signUp } from "../../services/api";
 import * as S from "./RegisterPage.styled";
+import { AuthContext } from "../../contexts/AuthContext";
 
-export default function RegisterPage({ setUser }) {
+export default function RegisterPage() {
   const navigate = useNavigate();
+  const { loginUser } = useContext(AuthContext);
   const [error, setError] = useState(null);
 
   const [formData, setFormData] = useState({
@@ -20,15 +22,28 @@ export default function RegisterPage({ setUser }) {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+
+    if (!formData.name.trim()) {
+      setError("Введите имя");
+      return;
+    }
+    if (!formData.login.trim()) {
+      setError("Введите почту");
+      return;
+    }
+    if (!formData.password.trim()) {
+      setError("Введите пароль");
+      return;
+    }
+
     try {
       const data = await signUp(formData);
-      setUser(data.user);
+      loginUser(data.user);
       navigate("/");
     } catch (err) {
       setError(err.message);
     }
   };
-
   return (
     <S.Wrapper>
       <S.Container>
