@@ -117,7 +117,11 @@ export default function PopNewCard() {
               </div>
             </div>
 
-            <button onClick={handleFormSubmit} type="button">
+            <button
+              onClick={handleFormSubmit}
+              type="button"
+              className="form-new__create _btn-bg _hover01"
+            >
               Создать задачу
             </button>
           </div>

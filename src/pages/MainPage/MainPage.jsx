@@ -3,7 +3,9 @@ import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import { Outlet } from "react-router-dom";
 import { getTasks } from "../../services/api";
+
 //import * as S from "../../App.styled";
+import "../../App.css";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { TaskContext } from "../../contexts/TaskContext";
@@ -22,9 +24,11 @@ export default function MainPage() {
         setError(null);
         setCards(data.tasks);
       })
-      .catch((err) => {
-        setError(err.message || "Ошибка при загрузке задач. Попробуйте позже.");
+
+      .catch((error) => {
+        setError(error.message);
       })
+
       .finally(() => {
         setIsLoading(false);
       });
@@ -33,12 +37,19 @@ export default function MainPage() {
   return (
     <>
       <Header />
-      {error && (
-        <div style={{ color: "red", textAlign: "center", padding: "20px" }}>
-          {error}
-        </div>
-      )}
-      {isLoading ? <div className="loader">...</div> : <Main cards={cards} />}
+
+      <main className="main">
+        {isLoading ? (
+          <div className="loader">...</div>
+        ) : (
+          <>
+            <Main cards={cards} />
+
+            {error && <div className="error-message">{error}</div>}
+          </>
+        )}
+      </main>
+
       <Outlet />
     </>
   );
