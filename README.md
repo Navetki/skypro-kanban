@@ -32,3 +32,30 @@ npm install
 
 Для запуска проекта в режиме разработки выполните команду:
 npm run dev
+
+Финальная проверка по критериям:
+AuthContext создан по стандарту:
+
+Да. Мы разделили его на AuthContext.js (объект) и AuthProvider.jsx (логика), что убрало ошибки Fast Refresh. Внутри только логика user, loginUser и logoutUser.
+TaskContext создан по стандарту:
+
+Да. Задачи хранятся в состоянии cards, используются методы setCards для обновления.
+App.jsx обёрнут в Провайдеры:
+
+Да. Структура в App.jsx теперь выглядит так:
+jsx
+<AuthProvider>
+<TaskProvider>
+<AppRoutes />
+</TaskProvider>
+</AuthProvider>
+Используйте код с осторожностью.
+
+useContext используется везде:
+
+Да. Мы прошлись по всем важным точкам:
+Header: берет user для отображения имени.
+LoginPage / RegisterPage: используют loginUser.
+MainPage: использует cards для отрисовки и setCards для загрузки.
+PopNewCard / PopBrowse: используют setCards и user напрямую из контекста (мы удалили старый Outlet context).
+PopUser: использует logoutUser.
