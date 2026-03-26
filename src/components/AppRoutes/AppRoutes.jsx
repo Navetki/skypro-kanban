@@ -20,9 +20,14 @@ export default function AppRoutes() {
         <Route path="new-card" element={<PopNewCard />} />
         <Route path="card/:id" element={<PopBrowse />} />
       </Route>
-
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route
+        path="/login"
+        element={!user ? <LoginPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/register"
+        element={!user ? <RegisterPage /> : <Navigate to="/" />}
+      />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

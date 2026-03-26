@@ -1,10 +1,8 @@
-// создание задачи
-
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { postTask } from "../../../services/api";
 import Calendar from "../../Calendar/Calendar";
-
+import { toast } from "react-toastify";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { TaskContext } from "../../../contexts/TaskContext";
 
@@ -17,7 +15,10 @@ export default function PopNewCard() {
     title: "",
     topic: "Web Design",
     description: "",
+    date: new Date(),
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,21 +28,31 @@ export default function PopNewCard() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    if (!newTask.title.trim()) {
-      alert("Введите название задачи");
+    if (!newTask.title.trim() || !newTask.description.trim()) {
+      toast.warning("Заполните все поля задачи");
       return;
     }
 
     try {
+      setIsSubmitting(true);
+
       const data = await postTask({
         token: user.token,
-        taskData: { ...newTask, date: new Date() },
+        taskData: {
+          title: newTask.title.trim(),
+          topic: newTask.topic,
+          description: newTask.description.trim(),
+          date: newTask.date,
+        },
       });
 
       setCards(data.tasks);
+      toast.success("Ура! Задача создана");
       navigate("/");
     } catch (err) {
-      alert("Ошибка при создании задачи: " + err.message);
+      toast.error(err.message || "Ошибка при создании задачи");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -86,7 +97,11 @@ export default function PopNewCard() {
                   ></textarea>
                 </div>
               </form>
-              <Calendar />
+
+              <Calendar
+                selectedDate={newTask.date}
+                setSelectedDate={(date) => setNewTask({ ...newTask, date })}
+              />
             </div>
 
             <div className="pop-new-card__categories categories">
@@ -119,10 +134,11 @@ export default function PopNewCard() {
 
             <button
               onClick={handleFormSubmit}
+              disabled={isSubmitting}
               type="button"
               className="form-new__create _btn-bg _hover01"
             >
-              Создать задачу
+              {isSubmitting ? "Создание..." : "Создать задачу"}
             </button>
           </div>
         </div>

@@ -8,13 +8,14 @@ export default function NotFoundPage() {
         <S.ModalBlock>
           <S.ModalTtl>
             <h2>404</h2>
-            <p>Страница не найдена</p>
           </S.ModalTtl>
-          <S.ModalBtnEnter>
-            <Link to="/" style={{ color: "#fff" }}>
-              Вернуться на главную
-            </Link>
-          </S.ModalBtnEnter>
+          <p>Страница не найдена</p>
+          <Link
+            to="/"
+            style={{ color: "#565EEF", marginTop: "20px", display: "block" }}
+          >
+            Вернуться на главную
+          </Link>
         </S.ModalBlock>
       </S.Modal>
     </S.Wrapper>

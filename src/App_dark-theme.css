@@ -1,0 +1,282 @@
+.dark-theme,
+.dark-theme body,
+.dark-theme .main,
+.dark-theme .wrapper {
+  background-color: #151419 !important;
+  color: #ffffff !important;
+}
+
+.dark-theme [class*="Card"],
+.dark-theme [class*="CardsContainer"] {
+  background-color: #20202c !important;
+  color: #ffffff !important;
+}
+
+.dark-theme header,
+.dark-theme [class*="Header"] {
+  background-color: #20202c !important;
+  border-bottom: 1px solid #4e5566 !important;
+}
+
+.dark-theme [class*="Header"] p,
+.dark-theme [class*="Header"] a {
+  color: #ffffff !important;
+}
+
+.dark-theme [class*="Header"] h1,
+.dark-theme [class*="Header"] img {
+  filter: brightness(0) invert(1);
+}
+
+.dark-theme ._orange p,
+.dark-theme [class*="orange"] p {
+  color: #ffe4c2 !important;
+}
+.dark-theme ._green p,
+.dark-theme [class*="green"] p {
+  color: #b4fdd1 !important;
+}
+.dark-theme ._purple p,
+.dark-theme [class*="purple"] p {
+  color: #e9d4ff !important;
+}
+
+.dark-theme .calendar,
+.dark-theme [class*="Calendar"],
+.dark-theme .react-calendar {
+  background-color: #20202c !important;
+  border: none !important;
+}
+.dark-theme ._orange,
+.dark-theme [class*="orange"] {
+  background-color: #ff6d00 !important;
+}
+.dark-theme ._green,
+.dark-theme [class*="green"] {
+  background-color: #06b16e !important;
+}
+.dark-theme ._purple,
+.dark-theme [class*="purple"] {
+  background-color: #9a48f1 !important;
+}
+
+.dark-theme ._orange p,
+.dark-theme [class*="orange"] p {
+  color: #ffe4c2 !important;
+}
+.dark-theme ._green p,
+.dark-theme [class*="green"] p {
+  color: #b4fdd1 !important;
+}
+.dark-theme ._purple p,
+.dark-theme [class*="purple"] p {
+  color: #e9d4ff !important;
+}
+
+.dark-theme,
+.dark-theme body,
+.dark-theme .wrapper {
+  overflow-x: hidden !important;
+}
+
+@media (max-width: 1200px) {
+  .dark-theme [class*="MainContent"],
+  .dark-theme [class*="ColumnBlock"] {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .dark-theme [class*="CardsContainer"] {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+}
+
+.dark-theme ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark-theme ::-webkit-scrollbar-track {
+  background: #151419;
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: #4e5566;
+  border-radius: 10px;
+}
+
+.dark-theme .react-calendar {
+  background-color: #20202c !important;
+  border: 1px solid #4e5566 !important;
+  color: #ffffff !important;
+  font-family: inherit;
+  border-radius: 8px;
+}
+
+.dark-theme .react-calendar__navigation button {
+  color: #94a3b8 !important;
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+}
+
+.dark-theme .react-calendar__navigation button:enabled:hover,
+.dark-theme .react-calendar__navigation button:enabled:focus {
+  background-color: #151419 !important;
+}
+
+.dark-theme .react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none !important;
+  color: #94a3b8 !important;
+}
+
+.dark-theme .react-calendar__tile {
+  color: #94a3b8 !important;
+  background: none;
+}
+
+.dark-theme .react-calendar__month-view__days__day--neighboringMonth {
+  color: #4e5566 !important;
+}
+
+.dark-theme .react-calendar__tile:enabled:hover,
+.dark-theme .react-calendar__tile:enabled:focus {
+  background-color: #565ee2 !important;
+  border-radius: 6px;
+}
+
+.dark-theme .react-calendar__tile--active {
+  background: #565ee2 !important;
+  color: white !important;
+  border-radius: 6px;
+}
+
+.dark-theme .react-calendar__tile--now {
+  background: #151419 !important;
+  border: 1px solid #565ee2 !important;
+  border-radius: 6px;
+}
+
+.dark-theme .calendar-ttl,
+.dark-theme [class*="CalendarTtl"] {
+  color: #ffffff !important;
+}
+.dark-theme .pop-new-card__container,
+.dark-theme .pop-new-card__content {
+  background-color: #20202c !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.dark-theme .pop-new-card__ttl {
+  color: #ffffff !important;
+}
+
+.dark-theme .form-new__input::placeholder,
+.dark-theme .form-new__area::placeholder {
+  color: #94a3b8 !important;
+}
+
+.dark-theme .subttl {
+  color: #ffffff !important;
+}
+
+.dark-theme .pop-new-card__calendar {
+  background-color: #20202c !important;
+}
+
+.dark-theme .calendar__period p {
+  color: #94a3b8 !important;
+}
+.dark-theme .calendar__period span {
+  color: #ffffff !important;
+}
+
+.dark-theme .pop-new-card__close {
+  color: #ffffff !important;
+}
+.dark-theme .pop-new-card__container {
+  background-color: #20202c !important;
+  color: #ffffff !important;
+}
+.dark-theme .pop-new-card__block,
+.dark-theme .pop-new-card__content {
+  background-color: #20202c !important;
+}
+.dark-theme .pop-new-card__ttl {
+  color: #ffffff !important;
+}
+.dark-theme .subttl,
+.dark-theme .pop-new-card__subttl {
+  color: #ffffff !important;
+}
+.dark-theme .pop-new-card__btn-group,
+.dark-theme .form-new__block {
+  background-color: #20202c !important;
+}
+.dark-theme .calendar__p {
+  color: #ffffff !important;
+}
+.dark-theme [class*="pop-browse__container"],
+.dark-theme [class*="pop-new-card__container"],
+.dark-theme .pop-browse__block,
+.dark-theme .pop-new-card__block {
+  background-color: #20202c !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+.dark-theme .form-browse__area,
+.dark-theme .form-new__area,
+.dark-theme .form-new__input {
+  background-color: #20202c !important;
+  color: #ffffff !important;
+  border: 1px solid #4e5566 !important;
+}
+.dark-theme .pop-browse__ttl,
+.dark-theme .pop-new-card__ttl,
+.dark-theme .subttl {
+  color: #ffffff !important;
+}
+.dark-theme .pop-new-card__calendar,
+.dark-theme .pop-browse__calendar,
+.dark-theme .calendar {
+  background-color: #20202c !important;
+}
+.dark-theme .calendar__p,
+.dark-theme .calendar__period p {
+  color: #94a3b8 !important;
+}
+.dark-theme .calendar__period span {
+  color: #ffffff !important;
+}
+.dark-theme [class*="_btn-bg"],
+.dark-theme .btn-browse__close {
+  background-color: #565ee2 !important;
+  color: #ffffff !important;
+}
+.dark-theme [class*="_btn-bor"],
+.dark-theme .btn-browse__edit,
+.dark-theme .btn-browse__delete {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff !important;
+  transition: all 0.3s ease;
+}
+.dark-theme [class*="_btn-bor"]:hover,
+.dark-theme .btn-browse__edit:hover,
+.dark-theme .btn-browse__delete:hover {
+  background-color: #33393b !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+}
+.dark-theme .btn-browse__delete:hover {
+  background-color: #af1414 !important;
+  border-color: #af1414 !important;
+}
+.dark-theme .btn-group {
+  display: flex;
+  gap: 8px;
+  margin-right: 8px;
+}

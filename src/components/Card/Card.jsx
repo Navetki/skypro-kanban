@@ -1,10 +1,14 @@
 import * as S from "./Card.styled";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export default function Card({ topic, title, date, _id }) {
+  const { isDark } = useContext(ThemeContext);
+
   return (
     <S.CardsItem>
-      <S.CardsContainer>
+      <S.CardsContainer $isDark={isDark}>
         <S.CardGroup>
           <S.CardTheme $topic={topic}>
             <p>{topic}</p>
@@ -18,10 +22,12 @@ export default function Card({ topic, title, date, _id }) {
             </S.CardBtn>
           </Link>
         </S.CardGroup>
+
         <S.CardContent>
           <Link to={"/card/" + _id}>
-            <S.CardTitle>{title}</S.CardTitle>
+            <S.CardTitle $isDark={isDark}>{title}</S.CardTitle>
           </Link>
+
           <S.CardDate>
             <S.CardDateSvg viewBox="0 0 13 13">
               <path d="M10.5625 2.03125H2.4375C1.7644 2.03125 1.21875 2.5769 1.21875 3.25V10.5625C1.21875 11.2356 1.7644 11.7812 2.4375 11.7812H10.5625C11.2356 11.7812 11.7812 11.2356 11.7812 10.5625V3.25C11.7812 2.5769 11.2356 2.03125 10.5625 2.03125Z" />

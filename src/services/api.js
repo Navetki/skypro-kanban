@@ -1,7 +1,6 @@
 const baseHost = "https://wedev-api.sky.pro/api/kanban";
 const userHost = "https://wedev-api.sky.pro/api/user";
 
-//  список задач
 export async function getTasks({ token }) {
   const response = await fetch(baseHost, {
     method: "GET",
@@ -18,7 +17,6 @@ export async function getTasks({ token }) {
   return data;
 }
 
-// добавление задачи
 export async function postTask({ token, taskData }) {
   const response = await fetch(baseHost, {
     method: "POST",
@@ -39,7 +37,7 @@ export async function postTask({ token, taskData }) {
   const data = await response.json();
   return data;
 }
-// изменение
+
 export async function putTask({ token, taskData, id }) {
   const response = await fetch(`${baseHost}/${id}`, {
     method: "PUT",
@@ -57,7 +55,6 @@ export async function putTask({ token, taskData, id }) {
   return data;
 }
 
-//  удалениt задачи
 export async function deleteTask({ token, id }) {
   const response = await fetch(`${baseHost}/${id}`, {
     method: "DELETE",
@@ -73,11 +70,11 @@ export async function deleteTask({ token, id }) {
   const data = await response.json();
   return data;
 }
-//вход
+
 export async function signIn({ login, password }) {
   const response = await fetch(`${userHost}/login`, {
     method: "POST",
-
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ login, password }),
   });
 
@@ -90,11 +87,10 @@ export async function signIn({ login, password }) {
   return await response.json();
 }
 
-// Регистрация
 export async function signUp({ login, name, password }) {
   const response = await fetch(userHost, {
     method: "POST",
-
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ login, name, password }),
   });
 
