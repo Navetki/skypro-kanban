@@ -55,18 +55,21 @@ export default function RegisterPage() {
             <S.ModalForm onSubmit={handleRegister}>
               <S.ModalInput
                 name="name"
+                value={formData.name}
                 onChange={handleInputChange}
                 type="text"
                 placeholder="Имя"
               />
               <S.ModalInput
                 name="login"
+                value={formData.login}
                 onChange={handleInputChange}
                 type="email"
                 placeholder="Эл. почта"
               />
               <S.ModalInput
                 name="password"
+                value={formData.password}
                 onChange={handleInputChange}
                 type="password"
                 placeholder="Пароль"

@@ -3,11 +3,11 @@ import { Container } from "../../App.styled";
 import * as S from "./Header.styled";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
-import { TaskContext } from "../../contexts/TaskContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export default function Header() {
   const { user } = useContext(AuthContext);
-
+  const { isDark, toggleTheme } = useContext(ThemeContext);
   const [isOpened, setIsOpened] = useState(false);
 
   const toggleMenu = (e) => {
@@ -40,7 +40,13 @@ export default function Header() {
 
                 <div className="pop-user-set__theme">
                   <p>Темная тема</p>
-                  <input type="checkbox" name="checkbox" />
+
+                  <input
+                    type="checkbox"
+                    name="checkbox"
+                    checked={isDark}
+                    onChange={toggleTheme}
+                  />
                 </div>
                 <button type="button">
                   <Link to="/exit">Выйти</Link>
