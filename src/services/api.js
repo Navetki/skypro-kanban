@@ -74,7 +74,6 @@ export async function deleteTask({ token, id }) {
 export async function signIn({ login, password }) {
   const response = await fetch(`${userHost}/login`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ login, password }),
   });
 
@@ -90,16 +89,18 @@ export async function signIn({ login, password }) {
 export async function signUp({ login, name, password }) {
   const response = await fetch(userHost, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+
     body: JSON.stringify({ login, name, password }),
   });
 
-  if (response.status === 404) {
-    throw new Error("Сервер не нашел путь для регистрации. Проверьте URL.");
-  }
   if (response.status === 400) {
-    throw new Error("Пользователь с таким логином уже существует");
-  } else if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(
+      errorData.error || "Пользователь с таким логином уже существует",
+    );
+  }
+
+  if (!response.ok) {
     throw new Error("Ошибка сервера");
   }
 
