@@ -34,7 +34,7 @@ export default function Header() {
             </S.HeaderUser>
 
             {isOpened && (
-              <S.PopUserSet>
+              <S.PopUserSet $isDark={isDark}>
                 <p className="name">{user?.name || "Имя не указано"}</p>
                 <p className="mail">{user?.login || "Почта не указана"}</p>
 

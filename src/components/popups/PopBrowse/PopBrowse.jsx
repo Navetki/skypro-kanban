@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { deleteTask, putTask } from "../../../services/api";
 import Calendar from "../../Calendar/Calendar";
 import { toast } from "react-toastify";
+import PopDeleteConfirm from "../PopDeleteConfirm/PopDeleteConfirm";
 
 import { AuthContext } from "../../../contexts/AuthContext";
 import { TaskContext } from "../../../contexts/TaskContext";
@@ -21,8 +22,11 @@ export default function PopBrowse() {
   const { user } = useContext(AuthContext);
   const { cards, setCards } = useContext(TaskContext);
   const currentCard = cards.find((card) => card._id === id);
+
   const [isEditing, setIsEditing] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isDeleteConfirmOpen, setIsDeleteConfirmOpen] = useState(false);
+
   const [editedTask, setEditedTask] = useState({
     title: currentCard?.title || "",
     description: currentCard?.description || "",
@@ -32,8 +36,6 @@ export default function PopBrowse() {
   });
 
   const handleDeleteTask = async () => {
-    if (!window.confirm("Вы уверены, что хотите удалить задачу?")) return;
-
     try {
       setIsSubmitting(true);
       const data = await deleteTask({ token: user.token, id });
@@ -44,6 +46,7 @@ export default function PopBrowse() {
       toast.error(err.message || "Не удалось удалить задачу");
     } finally {
       setIsSubmitting(false);
+      setIsDeleteConfirmOpen(false);
     }
   };
 
@@ -80,6 +83,14 @@ export default function PopBrowse() {
 
   return (
     <div className="pop-browse" style={{ display: "block" }}>
+      {/* КРАСИВАЯ МОДАЛКА ВМЕСТО АЛЕРТА */}
+      {isDeleteConfirmOpen && (
+        <PopDeleteConfirm
+          onConfirm={handleDeleteTask}
+          onCancel={() => setIsDeleteConfirmOpen(false)}
+        />
+      )}
+
       <div className="pop-browse__container">
         <div className="pop-browse__block">
           <div className="pop-browse__content">
@@ -166,11 +177,11 @@ export default function PopBrowse() {
                       Редактировать задачу
                     </button>
                     <button
-                      onClick={handleDeleteTask}
+                      onClick={() => setIsDeleteConfirmOpen(true)}
                       disabled={isSubmitting}
                       className="btn-browse__delete _btn-bor _hover03"
                     >
-                      {isSubmitting ? "Удаление..." : "Удалить задачу"}
+                      Удалить задачу
                     </button>
                   </>
                 ) : (

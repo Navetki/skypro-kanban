@@ -158,4 +158,24 @@ export const GlobalStyle = createGlobalStyle`
   .dark-theme .react-calendar__month-view__days__day--neighboringMonth {
     color: #4e5566 !important;
   }
+    .dark-theme .pop-exit__block {
+    background-color: #20202c !important;
+    color: #ffffff !important;
+    border: 0.7px solid #4e5566;
+  }
+
+  .dark-theme .pop-exit__ttl h2 {
+    color: #ffffff !important;
+  }
+
+  .dark-theme .pop-exit__exit-no {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+  }
+  
+  .dark-theme .pop-exit__exit-no:hover {
+    background-color: #4e5566;
+    color: #ffffff;
+  }
 `;
