@@ -36,9 +36,10 @@ export const CardsItem = styled.div`
 `;
 
 export const CardsContainer = styled.div`
-  width: 220px;
-  height: 130px;
-  background-color: #ffffff;
+  width: auto;
+  min-height: 120px;
+  height: auto;
+  background-color: ${({ $isDark }) => ($isDark ? "#20202C" : "#ffffff")};
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -48,8 +49,9 @@ export const CardsContainer = styled.div`
 
   @media screen and (max-width: 1200px) {
     width: 220px;
-    height: 130px;
-    background-color: #ffffff;
+    height: auto;
+    min-height: 130px;
+    background-color: ${({ $isDark }) => ($isDark ? "#20202C" : "#ffffff")};
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -89,16 +91,19 @@ export const CardTitle = styled.h3`
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
-  color: #000000;
+  color: ${({ $isDark }) => ($isDark ? "#ffffff" : "#000000")};
   margin-bottom: 10px;
 `;
 
 export const CardContent = styled.div`
-  height: 64px;
+  height: auto;
+  min-height: 64px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: flex-start;
+  flex-grow: 1;
+  margin-bottom: 20px;
 `;
 
 export const CardDate = styled.div`

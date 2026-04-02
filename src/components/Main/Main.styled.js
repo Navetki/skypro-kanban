@@ -1,8 +1,22 @@
 import styled from "styled-components";
 
-export const Main = styled.main`
+export const Main = styled.div`
   width: 100%;
-  background-color: #eaeef6;
+
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+`;
+
+export const MainContainer = styled.div`
+  max-width: 1260px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+
+  @media screen and (max-width: 495px) {
+    padding: 0 16px;
+  }
 `;
 
 export const MainBlock = styled.div`
@@ -18,4 +32,8 @@ export const MainBlock = styled.div`
 export const MainContent = styled.div`
   width: 100%;
   display: flex;
+
+  @media screen and (max-width: 1200px) {
+    display: block;
+  }
 `;

@@ -11,7 +11,6 @@ export default function LoginPage() {
 
   const [error, setError] = useState(null);
 
-  // изменения в инпутах
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
