@@ -2,25 +2,25 @@
 .dark-theme body,
 .dark-theme .main,
 .dark-theme .wrapper {
-  background-color: #151419 !important;
-  color: #ffffff !important;
+  background-color: #151419;
+  color: #ffffff;
 }
 
 .dark-theme [class*="Card"],
 .dark-theme [class*="CardsContainer"] {
-  background-color: #20202c !important;
-  color: #ffffff !important;
+  background-color: #20202c;
+  color: #ffffff;
 }
 
 .dark-theme header,
 .dark-theme [class*="Header"] {
-  background-color: #20202c !important;
-  border-bottom: 1px solid #4e5566 !important;
+  background-color: #20202c;
+  border-bottom: 1px solid #4e5566;
 }
 
 .dark-theme [class*="Header"] p,
 .dark-theme [class*="Header"] a {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .dark-theme [class*="Header"] h1,
@@ -30,66 +30,66 @@
 
 .dark-theme ._orange p,
 .dark-theme [class*="orange"] p {
-  color: #ffe4c2 !important;
+  color: #ffe4c2;
 }
 .dark-theme ._green p,
 .dark-theme [class*="green"] p {
-  color: #b4fdd1 !important;
+  color: #b4fdd1;
 }
 .dark-theme ._purple p,
 .dark-theme [class*="purple"] p {
-  color: #e9d4ff !important;
+  color: #e9d4ff;
 }
 
 .dark-theme .calendar,
 .dark-theme [class*="Calendar"],
 .dark-theme .react-calendar {
-  background-color: #20202c !important;
-  border: none !important;
+  background-color: #20202c;
+  border: none;
 }
 .dark-theme ._orange,
 .dark-theme [class*="orange"] {
-  background-color: #ff6d00 !important;
+  background-color: #ff6d00;
 }
 .dark-theme ._green,
 .dark-theme [class*="green"] {
-  background-color: #06b16e !important;
+  background-color: #06b16e;
 }
 .dark-theme ._purple,
 .dark-theme [class*="purple"] {
-  background-color: #9a48f1 !important;
+  background-color: #9a48f1;
 }
 
 .dark-theme ._orange p,
 .dark-theme [class*="orange"] p {
-  color: #ffe4c2 !important;
+  color: #ffe4c2;
 }
 .dark-theme ._green p,
 .dark-theme [class*="green"] p {
-  color: #b4fdd1 !important;
+  color: #b4fdd1;
 }
 .dark-theme ._purple p,
 .dark-theme [class*="purple"] p {
-  color: #e9d4ff !important;
+  color: #e9d4ff;
 }
 
 .dark-theme,
 .dark-theme body,
 .dark-theme .wrapper {
-  overflow-x: hidden !important;
+  overflow-x: hidden;
 }
 
 @media (max-width: 1200px) {
   .dark-theme [class*="MainContent"],
   .dark-theme [class*="ColumnBlock"] {
-    display: block !important;
-    width: 100% !important;
+    display: block;
+    width: 100%;
   }
 
   .dark-theme [class*="CardsContainer"] {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }
 
@@ -108,15 +108,15 @@
 }
 
 .dark-theme .react-calendar {
-  background-color: #20202c !important;
-  border: 1px solid #4e5566 !important;
-  color: #ffffff !important;
+  background-color: #20202c;
+  border: 1px solid #4e5566;
+  color: #ffffff;
   font-family: inherit;
   border-radius: 8px;
 }
 
 .dark-theme .react-calendar__navigation button {
-  color: #94a3b8 !important;
+  color: #94a3b8;
   min-width: 44px;
   background: none;
   font-size: 16px;
@@ -124,156 +124,161 @@
 
 .dark-theme .react-calendar__navigation button:enabled:hover,
 .dark-theme .react-calendar__navigation button:enabled:focus {
-  background-color: #151419 !important;
+  background-color: #151419;
 }
 
 .dark-theme .react-calendar__month-view__weekdays__weekday abbr {
-  text-decoration: none !important;
-  color: #94a3b8 !important;
+  text-decoration: none;
+  color: #94a3b8;
 }
 
 .dark-theme .react-calendar__tile {
-  color: #94a3b8 !important;
+  color: #94a3b8;
   background: none;
 }
 
 .dark-theme .react-calendar__month-view__days__day--neighboringMonth {
-  color: #4e5566 !important;
+  color: #4e5566;
 }
 
 .dark-theme .react-calendar__tile:enabled:hover,
 .dark-theme .react-calendar__tile:enabled:focus {
-  background-color: #565ee2 !important;
+  background-color: #565ee2;
   border-radius: 6px;
 }
 
 .dark-theme .react-calendar__tile--active {
-  background: #565ee2 !important;
-  color: white !important;
+  background: #565ee2;
+  color: white;
   border-radius: 6px;
 }
 
 .dark-theme .react-calendar__tile--now {
-  background: #151419 !important;
-  border: 1px solid #565ee2 !important;
+  background: #151419;
+  border: 1px solid #565ee2;
   border-radius: 6px;
 }
 
 .dark-theme .calendar-ttl,
 .dark-theme [class*="CalendarTtl"] {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 .dark-theme .pop-new-card__container,
 .dark-theme .pop-new-card__content {
-  background-color: #20202c !important;
-  color: #ffffff !important;
-  border: none !important;
+  background-color: #20202c;
+  color: #ffffff;
+  border: none;
 }
 
 .dark-theme .pop-new-card__ttl {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .dark-theme .form-new__input::placeholder,
 .dark-theme .form-new__area::placeholder {
-  color: #94a3b8 !important;
+  color: #94a3b8;
 }
 
 .dark-theme .subttl {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .dark-theme .pop-new-card__calendar {
-  background-color: #20202c !important;
+  background-color: #20202c;
 }
 
 .dark-theme .calendar__period p {
-  color: #94a3b8 !important;
+  color: #94a3b8;
 }
 .dark-theme .calendar__period span {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .dark-theme .pop-new-card__close {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 .dark-theme .pop-new-card__container {
-  background-color: #20202c !important;
-  color: #ffffff !important;
+  background-color: #20202c;
+  color: #ffffff;
 }
 .dark-theme .pop-new-card__block,
 .dark-theme .pop-new-card__content {
-  background-color: #20202c !important;
+  background-color: #20202c;
 }
 .dark-theme .pop-new-card__ttl {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 .dark-theme .subttl,
 .dark-theme .pop-new-card__subttl {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 .dark-theme .pop-new-card__btn-group,
 .dark-theme .form-new__block {
-  background-color: #20202c !important;
+  background-color: #20202c;
 }
 .dark-theme .calendar__p {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 .dark-theme [class*="pop-browse__container"],
 .dark-theme [class*="pop-new-card__container"],
 .dark-theme .pop-browse__block,
 .dark-theme .pop-new-card__block {
-  background-color: #20202c !important;
-  color: #ffffff !important;
-  border: none !important;
+  background-color: rgba(32, 32, 44, 0.8);
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #4e5566;
+  border-radius: 12px;
+  box-shadow: 0px 10px 50px 0px rgba(0, 0, 0, 0.8);
 }
 .dark-theme .form-browse__area,
 .dark-theme .form-new__area,
 .dark-theme .form-new__input {
-  background-color: #20202c !important;
-  color: #ffffff !important;
-  border: 1px solid #4e5566 !important;
+  border: 1px solid #4e5566;
+  background-color: rgba(32, 32, 44, 0.8);
+  color: #ffffff;
+  border-radius: 8px;
 }
 .dark-theme .pop-browse__ttl,
 .dark-theme .pop-new-card__ttl,
 .dark-theme .subttl {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 .dark-theme .pop-new-card__calendar,
 .dark-theme .pop-browse__calendar,
 .dark-theme .calendar {
-  background-color: #20202c !important;
+  background-color: #20202c;
 }
 .dark-theme .calendar__p,
 .dark-theme .calendar__period p {
-  color: #94a3b8 !important;
+  color: #94a3b8;
 }
 .dark-theme .calendar__period span {
-  color: #ffffff !important;
+  color: #ffffff;
 }
 .dark-theme [class*="_btn-bg"],
 .dark-theme .btn-browse__close {
-  background-color: #565ee2 !important;
-  color: #ffffff !important;
+  background-color: #565ee2;
+  color: #ffffff;
 }
 .dark-theme [class*="_btn-bor"],
 .dark-theme .btn-browse__edit,
 .dark-theme .btn-browse__delete {
-  background-color: transparent !important;
-  color: #ffffff !important;
-  border: 1px solid #ffffff !important;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
   transition: all 0.3s ease;
 }
 .dark-theme [class*="_btn-bor"]:hover,
 .dark-theme .btn-browse__edit:hover,
 .dark-theme .btn-browse__delete:hover {
-  background-color: #33393b !important;
-  color: #ffffff !important;
-  border-color: #ffffff !important;
+  background-color: #33393b;
+  color: #ffffff;
+  border-color: #ffffff;
 }
 .dark-theme .btn-browse__delete:hover {
-  background-color: #af1414 !important;
-  border-color: #af1414 !important;
+  background-color: #af1414;
+  border-color: #af1414;
 }
 .dark-theme .btn-group {
   display: flex;

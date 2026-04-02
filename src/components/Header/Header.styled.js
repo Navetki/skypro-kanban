@@ -25,15 +25,18 @@ export const HeaderLogo = styled.div`
 `;
 
 export const HeaderNav = styled.nav`
-  max-width: 290px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+  @media screen and (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 export const HeaderBtnMainNew = styled.button`
-  width: 178px;
+  width: auto;
   height: 30px;
   border-radius: 4px;
   background-color: #565eef;
@@ -43,9 +46,12 @@ export const HeaderBtnMainNew = styled.button`
   line-height: 1;
   font-weight: 500;
   margin-right: 20px;
+  padding: 8px 24px;
+  white-space: nowrap;
 
   a {
     color: #ffffff;
+    text-decoration: none;
   }
   &:hover {
     background-color: #33399b;
@@ -105,6 +111,7 @@ export const PopUserSet = styled.div`
   z-index: 2;
   width: auto;
   min-width: 213px;
+  height: auto;
 
   .dark-theme & {
     background-color: #20202c;

@@ -7,7 +7,7 @@ a {
   text-decoration: none;
 }
 ._active-category {
-  opacity: 1 !important;
+  opacity: 1;
 }
 .main {
   width: 100%;
@@ -240,7 +240,7 @@ a {
   line-height: 1;
   color: #ffffff;
   float: right;
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 .subttl {
@@ -495,7 +495,7 @@ a {
   letter-spacing: -0.14px;
   margin-top: 14px;
   height: 200px;
-  color: #94a6be !important;
+  color: #94a6be;
 }
 .form-browse__area::-moz-placeholder {
   font-weight: 400;
@@ -655,7 +655,7 @@ a {
   }
   .form-new__create a,
   .form-new__create {
-    text-decoration: none !important;
+    text-decoration: none;
   }
 
   .pop-browse__block {
