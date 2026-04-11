@@ -1,4 +1,3 @@
-// выход из аккаунта
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthContext";

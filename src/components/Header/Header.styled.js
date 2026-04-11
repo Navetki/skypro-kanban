@@ -25,15 +25,18 @@ export const HeaderLogo = styled.div`
 `;
 
 export const HeaderNav = styled.nav`
-  max-width: 290px;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+  @media screen and (max-width: 768px) {
+    gap: 10px;
+  }
 `;
 
 export const HeaderBtnMainNew = styled.button`
-  width: 178px;
+  width: auto;
   height: 30px;
   border-radius: 4px;
   background-color: #565eef;
@@ -43,9 +46,12 @@ export const HeaderBtnMainNew = styled.button`
   line-height: 1;
   font-weight: 500;
   margin-right: 20px;
+  padding: 8px 24px;
+  white-space: nowrap;
 
   a {
     color: #ffffff;
+    text-decoration: none;
   }
   &:hover {
     background-color: #33399b;
@@ -96,8 +102,6 @@ export const PopUserSet = styled.div`
   position: absolute;
   top: 61px;
   right: 0;
-  width: 213px;
-  height: 205px;
   border-radius: 10px;
   border: 0.7px solid rgba(148, 166, 190, 0.4);
   background: #fff;
@@ -105,6 +109,15 @@ export const PopUserSet = styled.div`
   padding: 34px;
   text-align: center;
   z-index: 2;
+  width: auto;
+  min-width: 213px;
+  height: auto;
+
+  .dark-theme & {
+    background-color: #20202c;
+    border-color: #4e5566;
+    box-shadow: 0px 10px 39px 10px rgba(0, 0, 0, 0.5);
+  }
 
   p.name {
     color: #000;
@@ -113,7 +126,12 @@ export const PopUserSet = styled.div`
     line-height: 21px;
     letter-spacing: -0.14px;
     margin-bottom: 4px;
+
+    .dark-theme & {
+      color: #ffffff;
+    }
   }
+
   p.mail {
     color: #94a6be;
     font-size: 14px;
@@ -122,38 +140,24 @@ export const PopUserSet = styled.div`
     margin-bottom: 10px;
   }
 
-  button {
-    width: 72px;
-    height: 30px;
-    background: transparent;
-    color: #565eef;
-    border-radius: 4px;
-    border: 1px solid #565eef;
-
-    a {
-      color: #565eef;
-    }
-
-    &:hover {
-      background-color: #33399b;
-      color: #ffffff;
-      a {
-        color: #ffffff;
-      }
-    }
-  }
-
   .pop-user-set__theme {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
+
     p {
       color: #000;
       font-size: 14px;
       line-height: 21px;
       letter-spacing: -0.14px;
+      margin-bottom: 0;
+
+      .dark-theme & {
+        color: #ffffff;
+      }
     }
+
     input[type="checkbox"] {
       position: relative;
       width: 24px;
@@ -161,9 +165,8 @@ export const PopUserSet = styled.div`
       border-radius: 100px;
       background: #eaeef6;
       outline: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
       appearance: none;
+      cursor: pointer;
 
       &::before {
         content: "";
@@ -176,8 +179,38 @@ export const PopUserSet = styled.div`
         background-color: #94a6be;
         transition: 0.5s;
       }
-      &:checked[type="checkbox"]::before {
+      &:checked::before {
         left: 12px;
+        background-color: #565eef;
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    height: 30px;
+    background: transparent;
+    border-radius: 4px;
+    border: 1px solid ${(props) => (props.$isDark ? "#FFFFFF" : "#565eef")};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    a {
+      color: ${(props) => (props.$isDark ? "#FFFFFF" : "#565eef")};
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover {
+      background-color: ${(props) => (props.$isDark ? "#FFFFFF" : "#33399b")};
+      a {
+        color: ${(props) => (props.$isDark ? "#565EEF" : "#FFFFFF")};
       }
     }
   }

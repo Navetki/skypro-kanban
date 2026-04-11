@@ -25,12 +25,17 @@ export const ColumnTitle = styled.div`
   }
 `;
 export const Cards = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
-  display: block;
-  position: relative;
+  height: auto;
 
   @media screen and (max-width: 1200px) {
     display: flex;
-    overflow-y: auto;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
   }
 `;

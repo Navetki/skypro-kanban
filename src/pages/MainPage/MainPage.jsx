@@ -3,14 +3,16 @@ import Header from "../../components/Header/Header";
 import Main from "../../components/Main/Main";
 import { Outlet } from "react-router-dom";
 import { getTasks } from "../../services/api";
-//import * as S from "../../App.styled";
+import "../../App.css";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { TaskContext } from "../../contexts/TaskContext";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export default function MainPage() {
   const { user } = useContext(AuthContext);
   const { cards, setCards } = useContext(TaskContext);
+  const { isDark } = useContext(ThemeContext);
   const [isLoading, setIsLoading] = useState(user?.token ? true : false);
   const [error, setError] = useState(null);
 
@@ -23,7 +25,7 @@ export default function MainPage() {
         setCards(data.tasks);
       })
       .catch((err) => {
-        setError(err.message || "Ошибка при загрузке задач. Попробуйте позже.");
+        setError(err.message || "Ошибка при загрузке задач");
       })
       .finally(() => {
         setIsLoading(false);
@@ -33,12 +35,11 @@ export default function MainPage() {
   return (
     <>
       <Header />
-      {error && (
-        <div style={{ color: "red", textAlign: "center", padding: "20px" }}>
-          {error}
-        </div>
-      )}
-      {isLoading ? <div className="loader">...</div> : <Main cards={cards} />}
+
+      <main className={isDark ? "main dark-theme" : "main"}>
+        {isLoading ? <div className="loader"></div> : <Main cards={cards} />}
+        {error && <div className="error-message">{error}</div>}
+      </main>
       <Outlet />
     </>
   );
